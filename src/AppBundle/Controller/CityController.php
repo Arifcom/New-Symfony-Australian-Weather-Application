@@ -34,7 +34,9 @@ class CityController extends Controller {
      */
     public function detail(Request $request)
     {
-        $data       = $this->getDoctrine()->getRepository(City::class)->find($request->request->get('id'));
+        $city       = $this->getDoctrine()->getRepository(City::class);
+        $data       = $city->find($request->request->get('id'));
+        $nearby_city= $city->findOneByState($data->state);
         $request    = 'http://api.openweathermap.org/data/2.5/weather?q=' . $data->name . '&appid=610587cc5d3cb7ca56756c9642308387';
         $response   = file_get_contents($request);
         $json_object  = json_decode($response, true);
