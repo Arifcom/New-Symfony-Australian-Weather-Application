@@ -41,9 +41,10 @@ class CityController extends Controller {
         {
             unset($nearby_city[array_search($data,$nearby_city)]);
         }
+        $count      = count($nearby_city);
         $request    = 'http://api.openweathermap.org/data/2.5/weather?q=' . $data->name . '&appid=610587cc5d3cb7ca56756c9642308387';
         $response   = file_get_contents($request);
         $json_object  = json_decode($response, true);
-        return $this->render('city/detail.html.twig', ['data' => $data, 'nearby_city' => $nearby_city, 'json_object' => $json_object]);
+        return $this->render('city/detail.html.twig', ['data' => $data, 'nearby_city' => $nearby_city, 'count' => $count,'json_object' => $json_object]);
     }
 }

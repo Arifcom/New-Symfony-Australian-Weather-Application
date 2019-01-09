@@ -32,7 +32,7 @@
     
     <br />
     <div class="container text-center">
-        <h1>{{ data.name }} and The City Nearby {{ data.name }}</h1>
+        <h1>{{ data.name }}{% if count > 0 %}  and The City Nearby {{ data.name }} {% endif %}</h1>
         <br />
         <div class="row">
             <div class="col-md-3"></div>
@@ -123,6 +123,22 @@
             </div>
             <div class="col-md-3"></div>
         </div>
+        {% if count > 0 %}
+            <br />
+            <h3>City Nearby {{ data.name }}</h3>
+            <br />
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="list-group" style="text-align:left">
+                        {% for datas in nearby_city %}
+                            <a href="#" class="list-group-item list-group-item-action">{{ datas.name }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        {% endif %}
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
