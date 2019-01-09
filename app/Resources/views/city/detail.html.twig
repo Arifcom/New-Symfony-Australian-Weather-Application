@@ -83,8 +83,9 @@
                         position: new google.maps.LatLng({{ data.latitude }}, {{ data.longitude }}),
                         map: map,
                     });
-                city.addListener('click', function() {
-                    infowindowcity.open(map, marker);
+                google.maps.event.addListener(city,'click',function() {
+                    infowindowcity.setContent(contentString);
+                    infowindowcity.open(map, city);
                 });
                 for (count = 0; count < locations.length; count++) {
                     marker = new google.maps.Marker({
