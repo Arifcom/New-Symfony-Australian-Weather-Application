@@ -112,13 +112,13 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <div class="list-group" style="text-align:left">
-                    <a href="#" class="list-group-item list-group-item-action">Temperatur          :{{ json_object.main.temp }}</a>
-                    <a href="#" class="list-group-item list-group-item-action">Pressure            :{{ json_object.main.pressure }}</a>
-                    <a href="#" class="list-group-item list-group-item-action">Humidity            :{{ json_object.main.humidity }}</a>
-                    <a href="#" class="list-group-item list-group-item-action">Temperatur Minimum  :{{ json_object.main.temp_min }}</a>
-                    <a href="#" class="list-group-item list-group-item-action">Temperatur Maximum  :{{ json_object.main.temp_max }}</a>
-                    <a href="#" class="list-group-item list-group-item-action">Wind Speed          :{{ json_object.wind.speed }}</a>
-                    <a href="#" class="list-group-item list-group-item-action">Wind Deg            :{{ json_object.wind.deg }}</a>
+                    <div class="list-group-item list-group-item-action">Temperatur          :{{ json_object.main.temp }}</div>
+                    <div class="list-group-item list-group-item-action">Pressure            :{{ json_object.main.pressure }}</div>
+                    <div class="list-group-item list-group-item-action">Humidity            :{{ json_object.main.humidity }}</div>
+                    <div class="list-group-item list-group-item-action">Temperatur Minimum  :{{ json_object.main.temp_min }}</div>
+                    <div class="list-group-item list-group-item-action">Temperatur Maximum  :{{ json_object.main.temp_max }}</div>
+                    <div class="list-group-item list-group-item-action">Wind Speed          :{{ json_object.wind.speed }}</div>
+                    <div class="list-group-item list-group-item-action">Wind Deg            :{{ json_object.wind.deg }}</div>
                 </div>
             </div>
             <div class="col-md-3"></div>
@@ -132,7 +132,7 @@
                 <div class="col-md-6">
                     <div class="list-group" style="text-align:left">
                         {% for datas in nearby_city %}
-                            <a href="#" class="list-group-item list-group-item-action">{{ datas.name }}</a>
+                            <div class="list-group-item list-group-item-action">{{ datas.name }}</div>
                         {% endfor %}
                     </div>
                 </div>
