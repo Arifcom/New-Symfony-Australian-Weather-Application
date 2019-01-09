@@ -7,20 +7,25 @@
  */
 
 namespace AppBundle\Controller;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use AppBundle\Entity\City;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Description of City
  *
  * @author Arif Budiman
  */
-class City extends Controller {
+class CityController extends Controller {
     /**
-     * @Route("/City")
+     * @Route("/city")
      */
     public function index() {
-        return $this->render('city/index.html.twig');
+        $data = $this->getDoctrine()->getRepository(City::class)->findAll();
+        return $this->render('city/index.html.twig', ['data' => $data]);
     }
 }

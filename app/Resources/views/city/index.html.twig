@@ -35,7 +35,17 @@
         <div class="row">
             <div class="col-md-3"> </div>
             <div class="col-md-6">
-                
+                <form action="{{ url('city_detail') }}" method="post">
+                <select class="custom-select custom-select-md select2" name="id">
+                    <option selected disabled>Select a city ...</option>
+                    {% for datas in data %}
+                    <option value="{{ datas.id }}">City: {{ datas.name }} - State: {{ datas.state }}</option>
+                    {% endfor %}
+                </select>
+                <br />
+                <br />
+                <button class="btn btn-primary btn-sm" type="submit">Check</button>
+                </form>
             </div>
             <div class="col-md-3"> </div>
         </div>
