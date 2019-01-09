@@ -22,7 +22,7 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class CityController extends Controller {
     /**
-     * @Route("/city")
+     * @Route("/city", name="city")
      */
     public function index() {
         $data       = $this->getDoctrine()->getRepository(City::class)->findAll();
@@ -36,10 +36,14 @@ class CityController extends Controller {
     {
         $city       = $this->getDoctrine()->getRepository(City::class);
         $data       = $city->find($request->request->get('id'));
-        $nearby_city= $city->findOneByState($data->state);
+        $nearby_city= $city->findByState($data->state);
+        if (in_array($data, $nearby_city)) 
+        {
+            unset($nearby_city[array_search($data,$nearby_city)]);
+        }
         $request    = 'http://api.openweathermap.org/data/2.5/weather?q=' . $data->name . '&appid=610587cc5d3cb7ca56756c9642308387';
         $response   = file_get_contents($request);
         $json_object  = json_decode($response, true);
-        return $this->render('city/detail.html.twig', ['data' => $data, 'json_object' => $json_object]);
+        return $this->render('city/detail.html.twig', ['data' => $data, 'nearby_city' => $nearby_city, 'json_object' => $json_object]);
     }
 }
