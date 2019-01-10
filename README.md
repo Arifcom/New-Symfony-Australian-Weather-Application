@@ -12,10 +12,10 @@ How to run ?
 
 * Run "php bin/console server:run" command in your command prompt;
 
-Don't Forget!
+Don't Forget !
 --------------
 * The aplication need internet connection because it using google map api and open weather api;
 
 * The aplication need internet connection because it also using css and js file from online;
 
-Enjoy!
+Enjoy !
